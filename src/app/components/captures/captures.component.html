@@ -1,0 +1,12 @@
+<p>My captures</p>
+<div *ngIf="captures; else loading">
+  <ul *ngIf="captures.length > 0; else noItems">
+    <li *ngFor="let cap of captures">{{ cap.pokemonName }}</li>
+  </ul>
+  <ng-template #noItems>
+    <p>No pokemons</p>
+  </ng-template>
+</div>
+<ng-template #loading>
+  <p>loading</p>
+</ng-template>

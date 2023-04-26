@@ -18,16 +18,10 @@ export class AppComponent {
     this.captures = [];
   }
 
-  ngOnInit(): void {
-    this.onGetCaptures();
-    this.pokemonService.onGetPokemonsCount()?.subscribe((c) => console.log(c));
-    this.pokemonService
-      .onGetPokemonById('25')
-      ?.subscribe((c) => console.log(c));
-  }
+  ngOnInit(): void {}
 
   async onGetCaptures() {
-    this.pokemonCaptureService.getCaptures().subscribe((captures) => {
+    this.pokemonCaptureService.getCaptures()?.subscribe((captures) => {
       this.captures = captures;
     });
   }

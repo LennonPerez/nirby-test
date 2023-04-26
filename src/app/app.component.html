@@ -1,10 +1,1 @@
-<h1>Nirby</h1>
-<ul>
-  <li *ngFor="let capture of captures">
-    <div>
-      <p>{{ capture.pokemonName }}</p>
-      <button (click)="onReleaseCapture(capture)">delete</button>
-    </div>
-  </li>
-</ul>
-<button (click)="onCreateCapture()">create</button>
+<router-outlet></router-outlet>

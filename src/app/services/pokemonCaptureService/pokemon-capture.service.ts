@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthService } from '../authService/auth.service';
 import {
   Firestore,
   doc,
@@ -7,6 +8,8 @@ import {
   collectionData,
   addDoc,
   deleteDoc,
+  query,
+  where,
 } from '@angular/fire/firestore';
 import {
   PokemonCapture,
@@ -17,11 +20,18 @@ import {
   providedIn: 'root',
 })
 export class PokemonCaptureService {
-  constructor(private firestore: Firestore) {}
+  constructor(private firestore: Firestore, private auth: AuthService) {}
 
-  getCaptures(): Observable<PokemonCapture[]> {
+  getCaptures(): Observable<PokemonCapture[]> | null {
+    const currentUserId: string | undefined = this.auth.getCurrentUser()?.uid;
+    if (!currentUserId) return null;
+
     const capturesRef = collection(this.firestore, 'captures');
-    const data = collectionData(capturesRef, { idField: 'id' });
+    const queryByUserId = query(
+      capturesRef,
+      where('userId', '==', currentUserId)
+    );
+    const data = collectionData(queryByUserId, { idField: 'id' });
     return data as Observable<PokemonCapture[]>;
   }
 
