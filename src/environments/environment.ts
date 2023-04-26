@@ -11,7 +11,8 @@ export const environment = {
     authDomain: 'nirby-pokemon-test.firebaseapp.com',
     messagingSenderId: '610071602194',
   },
-  production: false
+  pokemonApiBaseUrl: 'https://pokeapi.co/api/v2',
+  production: false,
 };
 
 /*
