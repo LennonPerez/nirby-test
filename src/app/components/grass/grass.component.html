@@ -1,11 +1,22 @@
 <div class="d-flex flex-column items-center justify-content-center vh-100">
-  <app-pokemon-view-component
-    [pokemon]="ramdomPokemon"
-  ></app-pokemon-view-component>
-  <div class="mx-auto mt-1">
-    <app-pokeball-selector-component
-      (selectedAction)="onTryCatchPokemon($event)"
-    ></app-pokeball-selector-component>
+  <div *ngIf="isAPokemonLoaded; else loading">
+    <app-pokemon-view-component
+      [pokemon]="ramdomPokemon"
+    ></app-pokemon-view-component>
+    <div class="d-flex justify-content-center">
+      <app-pokeball-selector-component
+        [isDisabledButton]="!isAPokemonLoaded"
+        (selectedAction)="onTryCatchPokemon($event)"
+      ></app-pokeball-selector-component>
+    </div>
   </div>
+  <ng-template #loading>
+    <div
+      class="container d-flex flex-column justify-content-center align-items-center"
+      style="height: 75vh"
+    >
+      <app-loader-component></app-loader-component>
+    </div>
+  </ng-template>
   <p-toast></p-toast>
 </div>

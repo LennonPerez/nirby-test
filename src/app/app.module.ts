@@ -19,6 +19,7 @@ import { ButtonModule } from 'primeng/button';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { PokeballSelectorComponentComponent } from './components/pokeball-selector-component/pokeball-selector-component.component';
 import { NavbarComponentComponent } from './layout/navbar-component/navbar-component.component';
+import { LoaderComponentComponent } from './components/loader-component/loader-component.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { NavbarComponentComponent } from './layout/navbar-component/navbar-compo
     PokemonViewComponentComponent,
     PokeballSelectorComponentComponent,
     NavbarComponentComponent,
+    LoaderComponentComponent,
   ],
   imports: [
     BrowserModule,

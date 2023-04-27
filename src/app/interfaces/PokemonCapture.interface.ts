@@ -15,3 +15,7 @@ export interface PokemonCaptureToSave extends PokemonCaptureBase {
 export interface PokemonCapture extends PokemonCaptureToSave {
   id: string;
 }
+export interface PokemonCaptureToShow
+  extends Omit<PokemonCapture, 'captureTime'> {
+  captureTime: string;
+}

@@ -1,10 +1,11 @@
-<div class="mt-5 pt-5 px-4 px-md-5">
+<div class="mt-5 pt-5 px-4 px-md-5 h-100">
   <h1 class="h1 text-white mt-4 mb-4">My captures</h1>
   <div *ngIf="captures; else loading">
     <div *ngIf="captures.length > 0; else noItems" class="row">
       <p-card
         *ngFor="let cap of captures"
         [header]="cap.pokemonName"
+        [subheader]="'Captured at: ' + cap.captureTime"
         [style]="{
           marginBottom: '2rem',
           backgroundColor: 'rgb(48, 48, 54)',
@@ -45,6 +46,12 @@
     </ng-template>
   </div>
   <ng-template #loading>
-    <p>loading</p>
+    <div
+      class="container d-flex flex-column justify-content-center align-items-center"
+      style="height: 75vh"
+    >
+      <app-loader-component></app-loader-component>
+    </div>
   </ng-template>
 </div>
+<p-toast></p-toast>

@@ -1,10 +1,10 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { PokemonCapture } from '../../interfaces/PokemonCapture.interface';
+import { PokemonCaptureToShow } from '../../interfaces/PokemonCapture.interface';
 import { PokemonCaptureService } from '../../services/pokemonCaptureService/pokemon-capture.service';
 import { MessageService } from 'primeng/api';
-import { Router } from '@angular/router';
 import { getCapitalizedText } from '../../utils/getCapitalizedText';
-
+import formatDate from '../../utils/formatDate';
 @Component({
   selector: 'app-captures',
   templateUrl: './captures.component.html',
@@ -12,7 +12,7 @@ import { getCapitalizedText } from '../../utils/getCapitalizedText';
   providers: [MessageService],
 })
 export class CapturesComponent implements OnInit {
-  captures: PokemonCapture[] | undefined;
+  captures: PokemonCaptureToShow[] | undefined;
 
   constructor(
     private pokemonCaptureService: PokemonCaptureService,
@@ -26,13 +26,17 @@ export class CapturesComponent implements OnInit {
 
   onGetCaptures() {
     this.pokemonCaptureService.getCaptures()?.subscribe((captures) => {
-      this.captures = captures;
+      // We have to parse the captured time from Date to string
+      this.captures = captures.map((c) => {
+        const parsedDate = formatDate(c.captureTime) ?? 'Undefined';
+        return { ...c, captureTime: parsedDate };
+      });
     });
   }
 
-  async onReleaseCapture(pokemon: PokemonCapture) {
+  async onReleaseCapture(pokemon: PokemonCaptureToShow) {
     try {
-      await this.pokemonCaptureService.releaseCapture(pokemon);
+      await this.pokemonCaptureService.releaseCapture(pokemon.id);
       this.showToast(`You have released your ${pokemon.pokemonName}!`);
     } catch (error) {
       this.showToast('Han error has ocurred!', 'error');

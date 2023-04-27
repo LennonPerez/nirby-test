@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 
 @Component({
@@ -7,6 +7,7 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./pokeball-selector-component.component.scss'],
 })
 export class PokeballSelectorComponentComponent implements OnInit {
+  @Input() isDisabledButton: boolean = false;
   @Output() selectedAction = new EventEmitter<number>();
 
   pokeBalls: MenuItem[] = [

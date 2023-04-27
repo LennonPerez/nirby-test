@@ -1,5 +1,10 @@
 <p-menu #menu [model]="pokeBalls" [popup]="true"></p-menu>
 <div class="mx-auto mt-2">
-  <p-button icon="pi pi-list" label="Actions" (click)="menu.toggle($event)">
+  <p-button
+    icon="pi pi-list"
+    label="Actions"
+    [disabled]="isDisabledButton"
+    (click)="menu.toggle($event)"
+  >
   </p-button>
 </div>

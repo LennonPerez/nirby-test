@@ -26,6 +26,10 @@ export class GrassComponent implements OnInit {
     this.onGetPokemonsCount();
   }
 
+  get isAPokemonLoaded() {
+    return this.ramdomPokemon != null;
+  }
+
   onGetPokemonsCount() {
     this.pokemonService.onGetPokemonsCount()?.subscribe(({ count }) => {
       const ramdom: number = getRamdomInt(1, count);
