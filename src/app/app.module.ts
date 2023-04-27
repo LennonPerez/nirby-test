@@ -14,8 +14,11 @@ import { MainComponent } from './components/main/main.component';
 import { PokemonViewComponentComponent } from './components/pokemon-view-component/pokemon-view-component.component';
 import { MenuModule } from 'primeng/menu';
 import { ToastModule } from 'primeng/toast';
+import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { PokeballSelectorComponentComponent } from './components/pokeball-selector-component/pokeball-selector-component.component';
+import { NavbarComponentComponent } from './layout/navbar-component/navbar-component.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,7 @@ import { PokeballSelectorComponentComponent } from './components/pokeball-select
     MainComponent,
     PokemonViewComponentComponent,
     PokeballSelectorComponentComponent,
+    NavbarComponentComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +38,8 @@ import { PokeballSelectorComponentComponent } from './components/pokeball-select
     MenuModule,
     ToastModule,
     NoopAnimationsModule,
+    CardModule,
+    ButtonModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),

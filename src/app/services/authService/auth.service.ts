@@ -14,9 +14,9 @@ import {
 export class AuthService {
   constructor(private auth: Auth) {}
 
-  getCurrentUser() {
-    return this.auth.currentUser;
-  }
+  isLoggedIn = (): boolean => this.auth.currentUser != null;
+
+  getCurrentUser = (): User | null => this.auth.currentUser;
 
   loginWithGoogle() {
     return signInWithPopup(this.auth, new GoogleAuthProvider());

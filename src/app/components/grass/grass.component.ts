@@ -5,6 +5,7 @@ import PokemonData from '../../interfaces/Pokemon.interface';
 import { PokemonCaptureService } from '../../services/pokemonCaptureService/pokemon-capture.service';
 import { PokemonCaptureBase } from '../../interfaces/PokemonCapture.interface';
 import { MessageService } from 'primeng/api';
+import { getCapitalizedText } from '../../utils/getCapitalizedText';
 
 @Component({
   selector: 'app-grass',
@@ -44,8 +45,8 @@ export class GrassComponent implements OnInit {
 
     const capturedPokemon: PokemonCaptureBase = {
       pokemonId: this.ramdomPokemon.id,
-      pokemonName: this.ramdomPokemon.name,
-      pokemonType: this.ramdomPokemon.types[0].type.name,
+      pokemonName: getCapitalizedText(this.ramdomPokemon.name),
+      pokemonTypes: this.ramdomPokemon.types.map((t) => t.type),
       pokemonImageUrl: this.ramdomPokemon.sprites.front_default as string,
       captureTime: new Date(),
     };
@@ -76,7 +77,8 @@ export class GrassComponent implements OnInit {
   showToast(message: string, type?: string) {
     this.messageService.add({
       severity: type ?? 'success',
-      summary: message,
+      summary: getCapitalizedText(type ?? 'success'),
+      detail: message,
       closable: true,
     });
   }

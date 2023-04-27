@@ -1,6 +1,5 @@
 <p-menu #menu [model]="pokeBalls" [popup]="true"></p-menu>
 <div class="mx-auto mt-2">
-  <button class="btn btn-primary" type="button" (click)="menu.toggle($event)">
-    Actions
-  </button>
+  <p-button icon="pi pi-list" label="Actions" (click)="menu.toggle($event)">
+  </p-button>
 </div>
