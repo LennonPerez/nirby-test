@@ -24,7 +24,7 @@ export class PokemonCaptureService {
   constructor(private firestore: Firestore, private auth: AuthService) {}
 
   getCaptures(): Observable<PokemonCapture[]> | null {
-    const currentUserId: string | undefined = this.auth.getCurrentUser()?.uid;
+    const currentUserId: string | undefined = this.auth.getCurrentUser?.uid;
     if (!currentUserId) return null;
 
     const capturesRef = collection(this.firestore, 'captures');
@@ -37,7 +37,7 @@ export class PokemonCaptureService {
   }
 
   addNewCapture(pokemon: PokemonCaptureBase) {
-    const currentUserId: string | undefined = this.auth.getCurrentUser()?.uid;
+    const currentUserId: string | undefined = this.auth.getCurrentUser?.uid;
     if (!currentUserId) return null;
 
     const pokemonToSave: PokemonCaptureToSave = {

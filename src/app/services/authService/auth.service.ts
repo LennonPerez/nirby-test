@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import {
   Auth,
   signInWithPopup,
   signOut,
   GoogleAuthProvider,
+  GithubAuthProvider,
   User,
 } from '@angular/fire/auth';
 
@@ -14,12 +14,20 @@ import {
 export class AuthService {
   constructor(private auth: Auth) {}
 
-  isLoggedIn = (): boolean => this.auth.currentUser != null;
+  get isLoggedIn(): boolean {
+    return this.auth.currentUser != null;
+  }
 
-  getCurrentUser = (): User | null => this.auth.currentUser;
+  get getCurrentUser(): User | null {
+    return this.auth.currentUser;
+  }
 
   loginWithGoogle() {
     return signInWithPopup(this.auth, new GoogleAuthProvider());
+  }
+
+  loginWithGithub() {
+    return signInWithPopup(this.auth, new GithubAuthProvider());
   }
 
   logout() {

@@ -1,2 +1,18 @@
-<p>login works!</p>
-<button (click)="onLoginWithGoogle()">login with google</button>
+<div class="px-4 px-md-5">
+  <div
+    class="d-flex flex-column justify-content-center align-items-center vh-100"
+  >
+    <h1 class="mb-3">Log into PokeApp</h1>
+    <p-button
+      icon="pi pi-google"
+      label="login with Google"
+      (click)="onLoginWithGoogle()"
+    ></p-button>
+    <!-- <p-button
+      styleClass="p-button-secondary"
+      icon="pi pi-github"
+      label="login with Github"
+      (click)="onLoginWithGithub()"
+    ></p-button> -->
+  </div>
+</div>
