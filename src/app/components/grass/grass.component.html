@@ -1,7 +1,11 @@
-<p>
-  {{
-    ramdomPokemon
-      ? "Ramdom pokemon picked: " + ramdomPokemon.name
-      : "Loading..."
-  }}
-</p>
+<div class="d-flex flex-column items-center justify-content-center vh-100">
+  <app-pokemon-view-component
+    [pokemon]="ramdomPokemon"
+  ></app-pokemon-view-component>
+  <div class="mx-auto mt-1">
+    <app-pokeball-selector-component
+      (selectedAction)="onTryCatchPokemon($event)"
+    ></app-pokeball-selector-component>
+  </div>
+  <p-toast></p-toast>
+</div>

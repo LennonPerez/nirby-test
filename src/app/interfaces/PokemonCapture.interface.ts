@@ -1,5 +1,4 @@
 export interface PokemonCaptureBase {
-  userId: string;
   pokemonId: string;
   pokemonName: string;
   pokemonType: string;
@@ -7,6 +6,9 @@ export interface PokemonCaptureBase {
   captureTime: Date;
 }
 
-export interface PokemonCapture extends PokemonCaptureBase {
+export interface PokemonCaptureToSave extends PokemonCaptureBase {
+  userId: string;
+}
+export interface PokemonCapture extends PokemonCaptureToSave {
   id: string;
 }

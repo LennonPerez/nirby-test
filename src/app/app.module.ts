@@ -11,6 +11,11 @@ import { LoginComponent } from './components/login/login.component';
 import { GrassComponent } from './components/grass/grass.component';
 import { CapturesComponent } from './components/captures/captures.component';
 import { MainComponent } from './components/main/main.component';
+import { PokemonViewComponentComponent } from './components/pokemon-view-component/pokemon-view-component.component';
+import { MenuModule } from 'primeng/menu';
+import { ToastModule } from 'primeng/toast';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { PokeballSelectorComponentComponent } from './components/pokeball-selector-component/pokeball-selector-component.component';
 
 @NgModule({
   declarations: [
@@ -19,11 +24,16 @@ import { MainComponent } from './components/main/main.component';
     GrassComponent,
     CapturesComponent,
     MainComponent,
+    PokemonViewComponentComponent,
+    PokeballSelectorComponentComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    MenuModule,
+    ToastModule,
+    NoopAnimationsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),

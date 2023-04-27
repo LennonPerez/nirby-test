@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from '../authService/auth.service';
+import { PokemonCaptureToSave } from '../../interfaces/PokemonCapture.interface';
 import {
   Firestore,
   doc,
@@ -36,8 +37,16 @@ export class PokemonCaptureService {
   }
 
   addNewCapture(pokemon: PokemonCaptureBase) {
+    const currentUserId: string | undefined = this.auth.getCurrentUser()?.uid;
+    if (!currentUserId) return null;
+
+    const pokemonToSave: PokemonCaptureToSave = {
+      ...pokemon,
+      userId: currentUserId,
+    };
+
     const capturesRef = collection(this.firestore, 'captures');
-    return addDoc(capturesRef, pokemon);
+    return addDoc(capturesRef, pokemonToSave);
   }
 
   releaseCapture(pokemon: PokemonCapture) {
