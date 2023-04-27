@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
-import { Observable } from 'rxjs/internal/Observable';
 import { AuthService } from './services/authService/auth.service';
 
 @Component({

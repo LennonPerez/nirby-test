@@ -3,6 +3,17 @@
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
 
+$grid-breakpoints: (
+  xs: 0,
+  sm: 620px, // tu nuevo breakpoint para pantallas pequeñas
+  md: 768px,
+  lg: 1024px,
+  xl: 1400px,
+  xxl: 1900px
+);
+
+@import '~bootstrap/scss/bootstrap';
+
 * {
   margin: 0;
   padding: 0;
@@ -12,4 +23,3 @@ body {
   background-color: #121212;
   color: #fff;
 }
-

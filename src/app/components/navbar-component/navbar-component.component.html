@@ -5,6 +5,7 @@
   <p-button
     icon="pi pi-home"
     styleClass="p-button-rounded"
+    [disabled]="isHomeCurrentRoute"
     (click)="onGoToHome()"
   ></p-button>
   <p-button

@@ -20,13 +20,4 @@ export class LoginComponent implements OnInit {
       console.log(error);
     }
   }
-
-  async onLoginWithGithub() {
-    try {
-      await this.auth.loginWithGithub();
-      this.router.navigate(['']);
-    } catch (error) {
-      console.log(error);
-    }
-  }
 }

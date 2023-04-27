@@ -12,6 +12,10 @@ export class NavbarComponentComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  get isHomeCurrentRoute() {
+    return this.router.url === '/';
+  }
+
   onGoToHome() {
     this.router.navigate(['']);
   }

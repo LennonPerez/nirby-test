@@ -4,7 +4,6 @@ import {
   signInWithPopup,
   signOut,
   GoogleAuthProvider,
-  GithubAuthProvider,
   User,
 } from '@angular/fire/auth';
 
@@ -24,10 +23,6 @@ export class AuthService {
 
   loginWithGoogle() {
     return signInWithPopup(this.auth, new GoogleAuthProvider());
-  }
-
-  loginWithGithub() {
-    return signInWithPopup(this.auth, new GithubAuthProvider());
   }
 
   logout() {

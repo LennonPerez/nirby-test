@@ -11,7 +11,7 @@
           backgroundColor: 'rgb(48, 48, 54)',
           color: '#fff'
         }"
-        class="col-12 col-md-6 col-lg-4 col-xl-3"
+        class="col-12 col-sm-6 col-lg-4 col-xl-3 col-xxl-2"
       >
         <ng-template pTemplate="header">
           <img
@@ -42,7 +42,11 @@
         Seems like you haven't capture any pokemon so far, would you like to
         try?
       </p>
-      <p-button label="Capture" (click)="goToCapturePage()"></p-button>
+      <p-button
+        label="Gotta cath'em all"
+        icon="pi pi-box"
+        (click)="goToCapturePage()"
+      ></p-button>
     </ng-template>
   </div>
   <ng-template #loading>
